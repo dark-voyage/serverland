@@ -15,11 +15,20 @@
     "Mongoose",
     "Serverland"
   ],
-  "author": "Genemator Sakhib",
-  "license": "MIT",
+  "author": "Genemator Sakhib <genemators@gmail.com>",
+  "license": "GPL-3.0",
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "mongoose": "^5.2.8"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/genemators/serverland.git"
+  },
+  "bugs": {
+    "url": "https://github.com/genemators/serverland/issues"
+  },
+  "homepage": "https://github.com/genemators/serverland#readme"
 }
