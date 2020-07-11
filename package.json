@@ -2,11 +2,11 @@
   "name": "serverland",
   "version": "1.0.0",
   "description": "Serverland - Genemator's Server Manager.",
-  "main": "server.js",
+  "main": "core/server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js"
+    "dev": "nodemon app.js"
   },
   "keywords": [
     "Express",
