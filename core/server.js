@@ -1,3 +1,7 @@
+/**
+ * @name Server Bootstrap
+ */
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const database = require('../database/mongoose.js')
@@ -16,7 +20,7 @@ exports.launch = async () => {
 
 // define a simple route
     await app.get('/', (req, res) => {
-        res.json({"message": "Welcome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes."});
+        res.json({"message": "Welcome to Serverland application. This application belongs to Genemator for serving APIs."});
     });
 
     await require('../routes/note.routes.js')(app);
