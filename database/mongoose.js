@@ -10,10 +10,10 @@ exports.initialize = async () => {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useFindAndModify: true
-        }).then(() => {
-            console.log("Successfully connected to the database");
-        }).catch(error => {
-            console.log('Could not connect to the database. Exiting now...', error);
-            process.exit();
+        }).then(async () => {
+            await console.log("Successfully connected to the database");
+        }).catch(async error => {
+            await console.log('Could not connect to the database. Exiting now...', error);
+            await process.exit();
         });
 }

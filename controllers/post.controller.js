@@ -1,6 +1,6 @@
 /**
  * @name Post Controller
- * @desc Controller host of posts base
+ * @description Controller host of posts base
  */
 
 const Post = require('../models/post.model.js');

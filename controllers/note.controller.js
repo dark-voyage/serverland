@@ -1,6 +1,6 @@
 /**
  * @name Note Controller
- * @desc Controller host of notes base
+ * @description Controller host of notes base
  */
 
 const Note = require('../models/note.model.js');
