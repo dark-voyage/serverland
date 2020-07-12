@@ -7,3 +7,5 @@
 require('./apps/core/server').launch().then(async () => {
     await console.log("Application is being started")
 });
+
+require('./bots')
