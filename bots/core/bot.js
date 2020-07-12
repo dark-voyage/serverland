@@ -15,7 +15,7 @@ const launch = async () => {
             }
         })
             .then(async () => {
-                await console.log("Webhook method has been started")
+                await console.log("Webhook method has been chosen")
             })
             .catch(async error => {
                 await console.log(error)
@@ -23,7 +23,7 @@ const launch = async () => {
     } else if (env.toLowerCase() === "local") {
         await bot.launch()
             .then(async () => {
-                await console.log("Polling method has been started")
+                await console.log("Polling method has been chosen")
             })
             .catch(async error => {
                 await console.log(error)
