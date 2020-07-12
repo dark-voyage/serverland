@@ -5,29 +5,32 @@ const bot = new Telegraf(token)
 const composer = new Composer()
 const middleware = (composer) => bot.use(composer.middleware())
 
-if (env.toLowerCase() === "heroku") {
-    bot.launch({
-        webhook: {
-            domain: domain,
-            hookPath: '/bot',
-            port: port
-        }
-    })
-        .then(() => {
-        console.log("Webhook method has been started")
-    })
-        .catch(error => {
-        console.log(error)
-    })
-} else if (env.toLowerCase() === "local") {
-    bot.launch()
-        .then(() => {
-        console.log("Polling method has been started")
-    })
-        .catch(error => {
-            console.log(error)
+const launch = async () => {
+    if (env.toLowerCase() === "heroku") {
+        await bot.launch({
+            webhook: {
+                domain: domain,
+                hookPath: '/bot',
+                port: port
+            }
         })
-} else {
-    console.log("Bot can't be started due to wrong environment!")
+            .then(async () => {
+                await console.log("Webhook method has been started")
+            })
+            .catch(async error => {
+                await console.log(error)
+            })
+    } else if (env.toLowerCase() === "local") {
+        await bot.launch()
+            .then(async () => {
+                await console.log("Polling method has been started")
+            })
+            .catch(async serror => {
+                await console.log(error)
+            })
+    } else {
+        await console.log("Bot can't be started due to wrong environment!")
+    }
 }
-module.exports = { bot, composer, middleware }
+
+module.exports = { bot, composer, middleware, launch }

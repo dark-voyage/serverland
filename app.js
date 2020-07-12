@@ -8,4 +8,6 @@ require('./apps/core/server').launch().then(async () => {
     await console.log("Application is being started")
 });
 
-require('./bots')
+require('./bots/core/bot').launch().then(async () => {
+    await console.log("Bot has been started")
+})
