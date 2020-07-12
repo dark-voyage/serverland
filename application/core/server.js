@@ -24,8 +24,8 @@ exports.launch = async () => {
         res.json({"message": "Welcome to Serverland application. This application belongs to Genemator for serving APIs."});
     });
 
-    await require('../routes/note.routes.js')(app);
-    await require('../routes/post.routes.js')(app);
+    await require('../../notes/routes/note.routes.js')(app);
+    await require('../../posts/routes/post.routes.js')(app);
 
 // Listen for requests
     await app.listen(3000, () => {
