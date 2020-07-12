@@ -3,7 +3,7 @@
  * @description Controller host of notes base
  */
 
-const Note = require('../models/note.model.js');
+const Note = require('./model.js');
 
 // Create and Save a new Note
 exports.create = async (req, res) => {

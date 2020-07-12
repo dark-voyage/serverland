@@ -1,5 +1,5 @@
 module.exports = async (app) => {
-    const notes = require('../controllers/note.controller.js');
+    const notes = require('./controller.js');
 
     // Create a new Note
     await app.post('/notes', notes.create);

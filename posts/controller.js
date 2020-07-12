@@ -3,7 +3,7 @@
  * @description Controller host of posts base
  */
 
-const Post = require('../models/post.model.js');
+const Post = require('./model.js');
 
 // Create and Save a new Post
 exports.create = async (req, res) => {
