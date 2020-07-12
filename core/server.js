@@ -1,24 +1,25 @@
 /**
  * @name Server Bootstrap
+ * The main server where everything will be initialized
  */
 
 const express = require('express');
 const bodyParser = require('body-parser');
 const database = require('../database/mongoose.js')
 
-// create express app
+// Create express app
 const app = express();
 
 exports.launch = async () => {
-    // parse application/x-www-form-urlencoded
+    // Parse application/x-www-form-urlencoded
     await app.use(bodyParser.urlencoded({ extended: true }))
 
-// parse application/json
+// Parse application/json
     await app.use(bodyParser.json())
 
     await database.initialize()
 
-// define a simple route
+// Define a simple route
     await app.get('/', (req, res) => {
         res.json({"message": "Welcome to Serverland application. This application belongs to Genemator for serving APIs."});
     });
@@ -26,7 +27,7 @@ exports.launch = async () => {
     await require('../routes/note.routes.js')(app);
     await require('../routes/post.routes.js')(app);
 
-// listen for requests
+// Listen for requests
     await app.listen(3000, () => {
         console.log("Server is listening on port 3000");
     });
