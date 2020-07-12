@@ -1,7 +1,7 @@
 const Note = require('../models/note.model.js');
 
 // Create and Save a new Note
-exports.create = (req, res) => {
+exports.create = async (req, res) => {
     // Validate request
     if(!req.body.content) {
         return res.status(400).send({
@@ -16,7 +16,7 @@ exports.create = (req, res) => {
     });
 
     // Save Note in the database
-    note.save()
+    await note.save()
     .then(data => {
         res.send(data);
     }).catch(err => {
@@ -27,8 +27,8 @@ exports.create = (req, res) => {
 };
 
 // Retrieve and return all notes from the database.
-exports.findAll = (req, res) => {
-    Note.find()
+exports.findAll = async (req, res) => {
+    await Note.find()
     .then(notes => {
         res.send(notes);
     }).catch(err => {
@@ -39,8 +39,8 @@ exports.findAll = (req, res) => {
 };
 
 // Find a single note with a noteId
-exports.findOne = (req, res) => {
-    Note.findById(req.params.noteId)
+exports.findOne = async (req, res) => {
+    await Note.findById(req.params.noteId)
     .then(note => {
         if(!note) {
             return res.status(404).send({
@@ -61,7 +61,7 @@ exports.findOne = (req, res) => {
 };
 
 // Update a note identified by the noteId in the request
-exports.update = (req, res) => {
+exports.update = async (req, res) => {
     // Validate Request
     if(!req.body.content) {
         return res.status(400).send({
@@ -70,7 +70,7 @@ exports.update = (req, res) => {
     }
 
     // Find note and update it with the request body
-    Note.findByIdAndUpdate(req.params.noteId, {
+    await Note.findByIdAndUpdate(req.params.noteId, {
         title: req.body.title || "Untitled Note",
         content: req.body.content
     }, {new: true})
@@ -94,8 +94,8 @@ exports.update = (req, res) => {
 };
 
 // Delete a note with the specified noteId in the request
-exports.delete = (req, res) => {
-    Note.findByIdAndRemove(req.params.noteId)
+exports.delete = async (req, res) => {
+    await Note.findByIdAndRemove(req.params.noteId)
     .then(note => {
         if(!note) {
             return res.status(404).send({

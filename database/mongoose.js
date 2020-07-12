@@ -1,4 +1,4 @@
-exports.initialize = () => {
+exports.initialize = async () => {
     // Configuring the database
         const dbConfig = require('../config/database.config.js');
         const mongoose = require('mongoose');
@@ -6,7 +6,7 @@ exports.initialize = () => {
         mongoose.Promise = global.Promise;
 
     // Connecting to the database
-        mongoose.connect(dbConfig.url, {
+        await mongoose.connect(await dbConfig(), {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useFindAndModify: true

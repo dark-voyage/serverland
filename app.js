@@ -1,1 +1,3 @@
-require('./core/server').launch()
+require('./core/server').launch().then(r => {
+    console.log("Application is being started")
+});

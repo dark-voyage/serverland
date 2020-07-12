@@ -5,25 +5,25 @@ const database = require('../database/mongoose.js')
 // create express app
 const app = express();
 
-exports.launch = () => {
+exports.launch = async () => {
     // parse application/x-www-form-urlencoded
-    app.use(bodyParser.urlencoded({ extended: true }))
+    await app.use(bodyParser.urlencoded({ extended: true }))
 
 // parse application/json
-    app.use(bodyParser.json())
+    await app.use(bodyParser.json())
 
-    database.initialize()
+    await database.initialize()
 
 // define a simple route
-    app.get('/', (req, res) => {
+    await app.get('/', (req, res) => {
         res.json({"message": "Welcome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes."});
     });
 
-    require('../routes/note.routes.js')(app);
-    require('../routes/post.routes.js')(app);
+    await require('../routes/note.routes.js')(app);
+    await require('../routes/post.routes.js')(app);
 
 // listen for requests
-    app.listen(3000, () => {
+    await app.listen(3000, () => {
         console.log("Server is listening on port 3000");
     });
 }
