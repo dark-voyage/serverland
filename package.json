@@ -2,7 +2,7 @@
   "name": "serverland",
   "version": "1.0.0",
   "description": "Serverland - Genemator's Server Manager.",
-  "main": "application/core/server.js",
+  "main": "apps/core/server.js",
   "scripts": {
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1",

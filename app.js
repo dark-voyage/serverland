@@ -4,6 +4,6 @@
  * @description Express REST API Server for any purpose
  */
 
-require('./application/core/server').launch().then(async () => {
+require('./apps/core/server').launch().then(async () => {
     await console.log("Application is being started")
 });

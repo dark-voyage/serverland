@@ -1,7 +1,7 @@
 exports.initialize = async () => {
     // Configuring the database
         const dbConfig = require('../config/database.config.js');
-        const mongoose = require('application/database/mongoose');
+        const mongoose = require('apps/database/mongoose');
 
         mongoose.Promise = global.Promise;
 

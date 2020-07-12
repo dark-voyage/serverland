@@ -11,17 +11,17 @@ const database = require('../database/mongoose.js')
 const app = express();
 
 exports.launch = async () => {
-    // Parse application/x-www-form-urlencoded
+    // Parse apps/x-www-form-urlencoded
     await app.use(bodyParser.urlencoded({ extended: true }))
 
-// Parse application/json
+// Parse apps/json
     await app.use(bodyParser.json())
 
     await database.initialize()
 
 // Define a simple route
     await app.get('/', (req, res) => {
-        res.json({"message": "Welcome to Serverland application. This application belongs to Genemator for serving APIs."});
+        res.json({"message": "Welcome to Serverland apps. This apps belongs to Genemator for serving APIs."});
     });
 
     await require('../../notes/routes.js')(app);
