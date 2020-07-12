@@ -1,4 +1,4 @@
-const { token, domain, port, env } = require('../config/config')
+const { token, domain, port, env } = require('./config')
 const { Telegraf, Composer } = require('telegraf')
 
 const bot = new Telegraf(token)
@@ -25,12 +25,13 @@ const launch = async () => {
             .then(async () => {
                 await console.log("Polling method has been started")
             })
-            .catch(async serror => {
+            .catch(async error => {
                 await console.log(error)
             })
     } else {
         await console.log("Bot can't be started due to wrong environment!")
     }
+    require('../actions')
 }
 
 module.exports = { bot, composer, middleware, launch }
