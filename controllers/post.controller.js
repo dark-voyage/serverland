@@ -1,3 +1,8 @@
+/**
+ * @name Post Controller
+ * @desc Controller host of posts base
+ */
+
 const Post = require('../models/post.model.js');
 
 // Create and Save a new Post

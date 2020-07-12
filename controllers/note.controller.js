@@ -1,3 +1,8 @@
+/**
+ * @name Note Controller
+ * @desc Controller host of notes base
+ */
+
 const Note = require('../models/note.model.js');
 
 // Create and Save a new Note
