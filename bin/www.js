@@ -6,10 +6,10 @@
 
 require('../apps/core/server').launch()
     .then(async () => {
-    await console.log("Server is being started")
+    await console.log("Server is being started".green.bold)
 })
     .catch(error => {
-        console.log(`Error occurred while executing: ${error}`)
+        console.log(`Error occurred while executing: ${error}`.red.bold)
     });
 
 // require('../bots/core/bot').launch()

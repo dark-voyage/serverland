@@ -11,7 +11,7 @@ exports.initialize = async () => {
             useUnifiedTopology: true,
             useFindAndModify: true
         }).then(async () => {
-            await console.log("Successfully connected to the database");
+            await console.log("Successfully connected to the database".yellow.bold);
         }).catch(async error => {
             await console.log('Could not connect to the database. Exiting now...', error);
             await process.exit(1);

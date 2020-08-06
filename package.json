@@ -2,11 +2,15 @@
   "name": "serverland",
   "version": "1.0.0",
   "description": "Serverland - Genemator's Server Manager.",
-  "main": "apps/core/server.js",
+  "main": "bin/www",
   "scripts": {
     "start": "node bin/www",
-    "dev": "nodemon bin/www",
-    "test": "node bin/test"
+    "test": "node bin/test",
+    "dev": "nodemon bin/www"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.14.0"
   },
   "keywords": [
     "Express",
@@ -19,8 +23,11 @@
   "license": "GPL-3.0",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "colors": "^1.4.0",
     "express": "^4.17.1",
+    "is-reachable": "^4.0.0",
     "mongoose": "^5.7.5",
+    "node-fetch": "^2.6.0",
     "telegraf": "^3.38.0"
   },
   "devDependencies": {
