@@ -14,6 +14,6 @@ exports.initialize = async () => {
             await console.log("Successfully connected to the database");
         }).catch(async error => {
             await console.log('Could not connect to the database. Exiting now...', error);
-            await process.exit();
+            await process.exit(1);
         });
 }

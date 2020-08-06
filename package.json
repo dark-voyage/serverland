@@ -4,9 +4,9 @@
   "description": "Serverland - Genemator's Server Manager.",
   "main": "apps/core/server.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.js"
+    "start": "node bin/www",
+    "dev": "nodemon bin/www",
+    "test": "node bin/test"
   },
   "keywords": [
     "Express",
