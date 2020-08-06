@@ -1,6 +1,6 @@
 /**
  * @name Serverland Test CI
- * @version 1.0.0
+ * @version 0.1.0 alpha
  * @description Express REST API Server for any purpose
  */
 

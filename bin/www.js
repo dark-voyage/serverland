@@ -1,6 +1,6 @@
 /**
  * @name Serverland
- * @version 1.0.0
+ * @version 1.0.0 beta
  * @description Express REST API Server for any purpose
  */
 

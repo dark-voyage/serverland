@@ -5,7 +5,8 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const database = require('../database/mongoose.js')
+const database = require('../database/mongoose')
+const dbConfig = require('../config/server.config')
 
 // Create express app
 const app = express();
@@ -30,7 +31,7 @@ exports.launch = async () => {
     await require('../../posts/routes.js')(app);
 
     // Listen for requests
-    await app.listen(3000, () => {
+    await app.listen(dbConfig(), () => {
         console.log("Server is listening on port 3000".yellow.bold);
     });
 }
