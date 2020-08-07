@@ -1,0 +1,7 @@
+### Notes All Request
+GET http://localhost:3000/notes
+Accept: application/json
+
+### Notes One Request
+GET http://localhost:3000/notes/5f09650966eb66214c8568f8
+Accept: application/json

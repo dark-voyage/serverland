@@ -13,7 +13,7 @@ const app = express();
 
 exports.launch = async () => {
 
-    // Parse apps/x-www.js-form-urlencoded
+    // Parse apps/x-www-form-urlencoded
     await app.use(bodyParser.urlencoded({ extended: true }))
 
     // Parse apps/json
@@ -31,7 +31,7 @@ exports.launch = async () => {
     await require('../../posts/routes.js')(app);
 
     // Listen for requests
-    await app.listen(dbConfig(), () => {
+    const startup = await app.listen(dbConfig(), () => {
         console.log("Server is listening on port 3000".yellow.bold);
     });
 }

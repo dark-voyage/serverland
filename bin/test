@@ -49,10 +49,13 @@ const test = async (endpoint) => {
             await test('')
             await test('posts')
             await test('notes')
+            await console.log(`\n` + `FINISHED`.bgGreen.bold.white + `\n`)
+            process.exit(0)
             break;
         case false:
             await console.log("Application is not reachable!".red.bold)
-            process.exit(1)
+            await console.log(`\n` + `ABORTED`.bgRed.bold.white + `\n`)
+            process.exit(0)
             break;
     }
 })();
