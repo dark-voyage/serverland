@@ -48,7 +48,7 @@ const test = async (endpoint) => {
             await console.log(`\n` + `TEST PHASE`.bgYellow.red + `\n`)
             await test('')
             await test('posts')
-            await test('notes')
+            await test('products')
             await console.log(`\n` + `FINISHED`.bgGreen.bold.white + `\n`)
             process.exit(0)
             break;

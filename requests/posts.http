@@ -1,7 +1,0 @@
-### Posts All Request
-GET http://localhost:3000/posts
-Accept: application/json
-
-### Post One Request
-GET http://localhost:3000/posts/5f0965b0f0b3a914ac9ce496
-Accept: application/json
