@@ -3,7 +3,7 @@
  * @description Controller host of posts base
  */
 
-const Post = require('./model.js');
+const Product = require('./model.js');
 
 // Create and Save a new Post
 exports.create = async (req, res) => {
@@ -15,13 +15,16 @@ exports.create = async (req, res) => {
     }
 
     // Create a Post
-    const post = new Post({
+    const product = new Product({
         title: req.body.title || "Untitled Post",
-        content: req.body.content
+        price: req.body.price || 0.00,
+        categories: req.body.categories || [],
+        sizes: req.body.sizes || [],
+        preview: req.body.preview
     });
 
     // Save Post in the database
-    await post.save()
+    await product.save()
     .then(data => {
         res.send(data);
     }).catch(err => {
@@ -33,7 +36,7 @@ exports.create = async (req, res) => {
 
 // Retrieve and return all posts from the database.
 exports.findAll = async (req, res) => {
-    await Post.find()
+    await Product.find()
     .then(posts => {
         res.send(posts);
     }).catch(err => {
@@ -45,7 +48,7 @@ exports.findAll = async (req, res) => {
 
 // Find a single post with a postId
 exports.findOne = async (req, res) => {
-    await Post.findById(req.params.postId)
+    await Product.findById(req.params.postId)
     .then(post => {
         if(!post) {
             return res.status(404).send({
@@ -75,17 +78,17 @@ exports.update = async (req, res) => {
     }
 
     // Find post and update it with the request body
-    await Post.findByIdAndUpdate(req.params.postId, {
+    await Product.findByIdAndUpdate(req.params.productId, {
         title: req.body.title || "Untitled Post",
         content: req.body.content
     }, {new: true})
-    .then(post => {
-        if(!post) {
+    .then(product => {
+        if(!product) {
             return res.status(404).send({
-                message: "Post not found with id " + req.params.postId
+                message: "Post not found with id " + req.params.productId
             });
         }
-        res.send(post);
+        res.send(product);
     }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).send({
@@ -100,7 +103,7 @@ exports.update = async (req, res) => {
 
 // Delete a post with the specified postId in the request
 exports.delete = async (req, res) => {
-    await Post.findByIdAndRemove(req.params.postId)
+    await Product.findByIdAndRemove(req.params.postId)
     .then(post => {
         if(!post) {
             return res.status(404).send({
