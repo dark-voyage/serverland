@@ -17,6 +17,8 @@ exports.create = async (req, res) => {
     // Create a Post
     const post = new Post({
         title: req.body.title || "Untitled Post",
+        author: req.body.author || "Genemator Sakhib",
+        snippet: req.body.snippet || "No description provided...",
         content: req.body.content
     });
 
@@ -77,6 +79,8 @@ exports.update = async (req, res) => {
     // Find post and update it with the request body
     await Post.findByIdAndUpdate(req.params.postId, {
         title: req.body.title || "Untitled Post",
+        author: req.body.author || "Genemator Sakhib",
+        snippet: req.body.snippet || "No description provided...",
         content: req.body.content
     }, {new: true})
     .then(post => {
