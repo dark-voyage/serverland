@@ -10,7 +10,7 @@ const fetch = require('node-fetch')
 
 // Test function created manually by myself
 const test = async (endpoint) => {
-    await fetch('http://localhost:3000/' + endpoint, {
+    await fetch('https://api.genemator.me/' + endpoint, {
         method: 'GET'
     })
         .then(res => {
