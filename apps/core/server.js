@@ -27,6 +27,7 @@ exports.launch = async () => {
     // Parse apps/json
     await app.use(bodyParser.json())
 
+    // Initializing MongoDB database
     await database.initialize()
 
     // Define a simple route
@@ -34,19 +35,33 @@ exports.launch = async () => {
         res.json({"message": "Welcome to Serverland apps. This apps belongs to Genemator for serving APIs."});
     });
 
-    // Connected routes
+    // Connecting routes
     await require('../../posts/routes.js')(app);
+
+    // Error handling
+        // Handle 404
+        app.use(function(req, res) {
+            res.status(400);
+            res.json({title: '404: Not Found'});
+        });
+
+        // Handle 500
+        app.use(function(req, res, next, error) {
+            res.status(500);
+            res.json({title:'500: Internal Server Error', error: error});
+        });
+
 
     // Listen for requests
     await (async () => {
 
         if (process.env.HOST === "heroku") {
             await http.createServer(app).listen(dbConfig(), () => {
-                console.log("Server is listening on port 3000 => heroku".yellow.bold);
+                console.log("Server is listening on port 3000 => [heroku]".yellow.bold);
             });
         } else {
             await app.listen(dbConfig(), () => {
-                console.log("Server is listening on port 3000 => localhost".yellow.bold);
+                console.log("Server is listening on port 3000 => [localhost]".yellow.bold);
             });
         }
     })();
