@@ -3,15 +3,21 @@
  * The main server where everything will be initialized
  */
 
+const http = require('http');
 const express = require('express');
+const enforce = require('express-sslify');
 const bodyParser = require('body-parser');
 const database = require('../database/mongoose');
 const dbConfig = require('../config/server.config');
+
 
 // Create express app
 const app = express();
 
 exports.launch = async () => {
+
+    // Enforce https
+    app.use(enforce.HTTPS({ trustProtoHeader: true }))
 
     // Parse apps/x-www-form-urlencoded
     await app.use(bodyParser.urlencoded({ extended: true }))
@@ -30,7 +36,7 @@ exports.launch = async () => {
     await require('../../posts/routes.js')(app);
 
     // Listen for requests
-    const startup = await app.listen(dbConfig(), () => {
+    const startup = await http.createServer(app).listen(dbConfig(), () => {
         console.log("Server is listening on port 3000".yellow.bold);
     });
 }
