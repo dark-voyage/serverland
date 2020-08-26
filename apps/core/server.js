@@ -17,7 +17,9 @@ const app = express();
 exports.launch = async () => {
 
     // Enforce https
-    app.use(enforce.HTTPS({ trustProtoHeader: true }))
+    if (process.env.HOST === "heroku") {
+        app.use(enforce.HTTPS({ trustProtoHeader: true }))
+    }
 
     // Parse apps/x-www-form-urlencoded
     await app.use(bodyParser.urlencoded({ extended: true }))
@@ -36,7 +38,16 @@ exports.launch = async () => {
     await require('../../posts/routes.js')(app);
 
     // Listen for requests
-    const startup = await http.createServer(app).listen(dbConfig(), () => {
-        console.log("Server is listening on port 3000".yellow.bold);
-    });
+    await (async () => {
+
+        if (process.env.HOST === "heroku") {
+            await http.createServer(app).listen(dbConfig(), () => {
+                console.log("Server is listening on port 3000 => heroku".yellow.bold);
+            });
+        } else {
+            await app.listen(dbConfig(), () => {
+                console.log("Server is listening on port 3000 => localhost".yellow.bold);
+            });
+        }
+    })();
 }
