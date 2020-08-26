@@ -11,7 +11,9 @@ exports.initialize = async () => {
         await mongoose.connect(await dbConfig(), {
             useNewUrlParser: true,
             useUnifiedTopology: true,
-            useFindAndModify: true
+            useFindAndModify: true,
+            findOneAndUpdate: true,
+            findOneAndDelete: true
         }).then(async () => {
             await console.log("Successfully connected to the database".yellow.bold);
         }).catch(async error => {
