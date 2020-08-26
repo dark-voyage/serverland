@@ -20,6 +20,7 @@ const test = async (endpoint) => {
                     break;
                 case false:
                     console.log(`FAIL`.bgRed.white + ` /${endpoint || ''}`.yellow)
+                    process.exit(1)
                     break;
             }
         })

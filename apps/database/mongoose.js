@@ -1,3 +1,5 @@
+const colors = require('colors');
+
 exports.initialize = async () => {
     // Configuring the database
         const dbConfig = require('../config/database.config.js');

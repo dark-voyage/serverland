@@ -28,7 +28,6 @@ exports.launch = async () => {
 
     // Connected routes
     await require('../../posts/routes.js')(app);
-    await require('../../products/routes.js')(app);
 
     // Listen for requests
     const startup = await app.listen(dbConfig(), () => {
