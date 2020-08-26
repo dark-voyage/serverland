@@ -4,7 +4,8 @@
  */
 
 const express = require('express');
-const bodyParser = require('body-parser');
+const ssl = require('heroku-ssl-redirect')
+const bodyParser = require('body-parser')
 const database = require('../database/mongoose')
 const dbConfig = require('../config/server.config')
 
@@ -12,6 +13,9 @@ const dbConfig = require('../config/server.config')
 const app = express();
 
 exports.launch = async () => {
+
+    // Only https
+    app.use(ssl())
 
     // Parse apps/x-www-form-urlencoded
     await app.use(bodyParser.urlencoded({ extended: true }))
