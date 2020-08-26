@@ -32,7 +32,7 @@ exports.launch = async () => {
 
     // Define a simple route
     await app.get('/', (req, res) => {
-        res.json({"message": "Welcome to Serverland apps. This apps belongs to Genemator for serving APIs."});
+        res.redirect('https://genemator.me');
     });
 
     // Connecting routes
