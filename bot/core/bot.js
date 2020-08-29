@@ -16,7 +16,7 @@ const launch = async () => {
         // Indirect webhook method
         //     await bot.launch({
         //         webhook: {
-        //             domain: 'https://api.genemator.me',
+        //             domain: 'https://${process.env.APP}.herokuapp.com:8443/bot',
         //             hookPath: '/bot',
         //             port: 5000
         //         }
