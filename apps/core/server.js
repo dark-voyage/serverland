@@ -39,6 +39,9 @@ exports.launch = async () => {
     await require('../../posts/routes')(app);
     await require('../../quotes/routes')(app);
 
+    // Connecting telegram bot
+    await require('../../bot/core/bot').launch(app)
+
     // Error handling
         // Handle 404
         app.use(function(req, res) {

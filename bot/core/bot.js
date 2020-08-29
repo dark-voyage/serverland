@@ -6,15 +6,9 @@ const bot = new Telegraf(token)
 const composer = new Composer()
 const middleware = (composer) => bot.use(composer.middleware())
 
-const launch = async () => {
+const launch = async (app) => {
     if (env === "heroku") {
-        await bot.launch({
-            webhook: {
-                domain: domain,
-                hookPath: '/bot',
-                port: port
-            }
-        })
+        await app.use(bot.webhookCallback('/bot'))
             .then(async () => {
                 await console.log("Webhook method has been chosen".yellow)
             })
