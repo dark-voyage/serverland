@@ -8,8 +8,8 @@ const middleware = (composer) => bot.use(composer.middleware())
 const launch = async () => {
     if (process.env.HOST === "heroku") {
         // Direct method
-            await bot.startWebhook('/bot', null, 5000)
-            await bot.telegram.setWebhook('https://api.genemator.me:5000/bot')
+            await bot.startWebhook('/bot', null, 8443)
+            await bot.telegram.setWebhook('https://api.genemator.me:8443/bot')
 
         // Indirect method
             // await bot.launch({
