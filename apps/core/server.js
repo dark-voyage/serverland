@@ -7,6 +7,7 @@ const http = require('http');
 const express = require('express');
 const enforce = require('express-sslify');
 const bodyParser = require('body-parser');
+const { bot } = require('../../bot/core/bot')
 const database = require('../database/mongoose');
 const dbConfig = require('../config/server.config');
 
@@ -28,7 +29,24 @@ exports.launch = async () => {
     await app.use(bodyParser.json())
 
     // Connecting telegram bot
-    await require('../../bot/core/bot').launch(app)
+    if (process.env.HOST === "heroku") {
+        await (async () => {
+            // Removing old webhook path
+            await bot.telegram.deleteWebhook()
+
+            // Setting up webhook
+            await bot.telegram.setWebhook(`https://api.genemator.me/bot`)
+
+            // Adding up telegram
+            await app.use(bot.webhookCallback('/bot'))
+
+            // Loading functions & commands
+            require('../../bot/actions')
+        })()
+    } else {
+        await bot.launch()
+        require('../../bot/actions')
+    }
 
     // Initializing MongoDB database
     await database.initialize()
