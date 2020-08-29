@@ -55,14 +55,13 @@ exports.launch = async () => {
 
     // Listen for requests
     await (async () => {
-
         if (process.env.HOST === "heroku") {
             await http.createServer(app).listen(dbConfig(), () => {
-                console.log("Server is listening on port 3000 => [heroku]".yellow.bold);
+                console.log(`Server is listening on port ${dbConfig()} => [heroku]`.yellow.bold);
             });
         } else {
             await app.listen(dbConfig(), () => {
-                console.log("Server is listening on port 3000 => [localhost]".yellow.bold);
+                console.log(`Server is listening on port ${dbConfig()} => [localhost]`.yellow.bold);
             });
         }
     })();

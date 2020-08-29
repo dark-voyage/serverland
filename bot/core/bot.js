@@ -7,28 +7,34 @@ const middleware = (composer) => bot.use(composer.middleware())
 
 const launch = async () => {
     if (process.env.HOST === "heroku") {
-        // Direct webhook method
-        //     await bot.telegram.deleteWebhook()
-        //     await bot.telegram.setWebhook(`https://${process.env.APP}.herokuapp.com:8443/bot`)
-        //     await bot.startWebhook(`/bot`, null, 8443)
-        //     await console.log(`Direct webhook method has been chosen`.yellow)
+        /**
+         * Direct webhook method
+         */
+            // await bot.telegram.deleteWebhook()
+            // await bot.telegram.setWebhook(`https://${process.env.APP}.herokuapp.com:8443/bot`)
+            // await bot.startWebhook(`/bot`, null, 8443)
+            // await console.log(`Direct webhook method has been chosen`.yellow)
 
-        // Indirect webhook method
-        //     await bot.launch({
-        //         webhook: {
-        //             domain: 'https://${process.env.APP}.herokuapp.com:8443/bot',
-        //             hookPath: '/bot',
-        //             port: 5000
-        //         }
-        //     })
-        //         .then(async () => {
-        //             await console.log("Indirect webhook method has been chosen".yellow)
-        //         })
-        //         .catch(async error => {
-        //             await console.log(error)
-        //         })
+        /**
+         * Indirect webhook method
+         */
+            // await bot.launch({
+            //     webhook: {
+            //         domain: 'https://${process.env.APP}.herokuapp.com:8443/bot',
+            //         hookPath: '/bot',
+            //         port: 5000
+            //     }
+            // })
+            //     .then(async () => {
+            //         await console.log("Indirect webhook method has been chosen".yellow)
+            //     })
+            //     .catch(async error => {
+            //         await console.log(error)
+            //     })
 
-        // Polling method
+        /**
+         * Polling method
+         */
             await bot.telegram.deleteWebhook()
             await bot.startPolling()
             await console.log("Long polling method has been chosen".yellow)
