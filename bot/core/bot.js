@@ -13,12 +13,12 @@ const launch = async (app) => {
         await bot.telegram.deleteWebhook()
 
         // Setting up webhook
-        await bot.telegram.setWebhook(`${domain}/bot`)
+        await bot.telegram.setWebhook(`https://api.genemator.me/bot`)
 
         // Starting webhook session
         app.use(bot.webhookCallback('/bot'))
             .then(async () => {
-                await console.log("Webhook method has been chosen".yellow)
+                await console.log("Webhook method has been chosen for telegram bot".yellow)
             })
             .catch(async error => {
                 await console.log(error)
@@ -26,7 +26,7 @@ const launch = async (app) => {
     } else if (env === "local") {
         await bot.launch()
             .then(async () => {
-                await console.log("Polling method has been chosen".yellow)
+                await console.log("Polling method has been chosen for telegram bot".yellow)
             })
             .catch(async error => {
                 await console.log(error)
