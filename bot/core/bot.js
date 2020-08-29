@@ -17,12 +17,12 @@ const launch = async (app) => {
 
         // Starting webhook session
         app.use(bot.webhookCallback('/bot'))
-            .then(async () => {
-                await console.log("Webhook method has been chosen for telegram bot".yellow)
-            })
-            .catch(async error => {
-                await console.log(error)
-            })
+            // .then(async () => {
+            //     await console.log("Webhook method has been chosen for telegram bot".yellow)
+            // })
+            // .catch(async error => {
+            //     await console.log(error)
+            // })
     } else if (env === "local") {
         await bot.launch()
             .then(async () => {
