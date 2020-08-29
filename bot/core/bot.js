@@ -8,6 +8,7 @@ const middleware = (composer) => bot.use(composer.middleware())
 const launch = async () => {
     if (process.env.HOST === "heroku") {
         // Direct webhook method
+            // await bot.telegram.deleteWebhook()
             // await bot.startWebhook('/bot', null, 8443)
             // await bot.telegram.setWebhook('https://api.genemator.me:8443/bot')
 
@@ -26,7 +27,8 @@ const launch = async () => {
             //         await console.log(error)
             //     })
         // Polling method
-            bot.startPolling(100)
+            await bot.telegram.deleteWebhook()
+            await bot.startPolling(100)
     } else if (process.env.HOST === "local") {
         await bot.launch()
             .then(async () => {
