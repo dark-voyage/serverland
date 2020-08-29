@@ -9,7 +9,7 @@ const launch = async () => {
     if (process.env.HOST === "heroku") {
         // Direct webhook method
             await bot.telegram.deleteWebhook()
-            await bot.telegram.setWebhook(`https://${process.env.APP}.herokuapp.com/${process.env.BOT_TOKEN}`)
+            await bot.telegram.setWebhook(`https://${process.env.APP}.herokuapp.com:8443/${process.env.BOT_TOKEN}`)
             await bot.startWebhook(`${process.env.BOT_TOKEN}`, null, 8443)
 
         // Indirect webhook method
@@ -30,7 +30,7 @@ const launch = async () => {
         // Polling method
         //     await bot.telegram.deleteWebhook()
         //     await bot.startPolling(1000)
-        
+
     } else if (process.env.HOST === "local") {
         await bot.launch()
             .then(async () => {
