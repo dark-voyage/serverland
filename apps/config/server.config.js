@@ -6,7 +6,6 @@
  */
 
 module.exports = () => {
-    if (process.env.HOST === "heroku")
-        return process.env.PORT
-    else return 3000
-}
+  if (process.env.HOST === "heroku") return process.env.PORT;
+  else return 3000;
+};

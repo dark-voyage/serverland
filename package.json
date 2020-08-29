@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node bin/www",
     "test": "node bin/test",
-    "dev": "nodemon bin/www"
+    "dev": "nodemon bin/www",
+    "format": "prettier --write \"**/*.{js,jsx}\"\n"
   },
   "engines": {
     "node": ">=14.0.0",
@@ -29,6 +30,7 @@
     "is-reachable": "^4.0.0",
     "mongoose": "^5.7.5",
     "node-fetch": "^2.6.0",
+    "prettier": "^2.1.1",
     "telegraf": "^3.38.0"
   },
   "devDependencies": {
