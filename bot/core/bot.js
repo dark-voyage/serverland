@@ -8,27 +8,28 @@ const middleware = (composer) => bot.use(composer.middleware())
 const launch = async () => {
     if (process.env.HOST === "heroku") {
         // Direct webhook method
-            // await bot.telegram.deleteWebhook()
-            // await bot.startWebhook('/bot', null, 8443)
-            // await bot.telegram.setWebhook('https://api.genemator.me:8443/bot')
+            await bot.telegram.deleteWebhook()
+            await bot.telegram.setWebhook(`https://${process.env.APP}.herokuapp.com/${process.env.BOT_TOKEN}`)
+            await bot.startWebhook(`${process.env.BOT_TOKEN}`, null, 8443)
 
         // Indirect webhook method
-            // await bot.launch({
-            //     webhook: {
-            //         domain: 'https://api.genemator.me',
-            //         hookPath: '/bot',
-            //         port: 5000
-            //     }
-            // })
-            //     .then(async () => {
-            //         await console.log("Webhook method has been chosen".yellow)
-            //     })
-            //     .catch(async error => {
-            //         await console.log(error)
-            //     })
+        //     await bot.launch({
+        //         webhook: {
+        //             domain: 'https://api.genemator.me',
+        //             hookPath: '/bot',
+        //             port: 5000
+        //         }
+        //     })
+        //         .then(async () => {
+        //             await console.log("Webhook method has been chosen".yellow)
+        //         })
+        //         .catch(async error => {
+        //             await console.log(error)
+        //         })
+
         // Polling method
-            await bot.telegram.deleteWebhook()
-            await bot.startPolling(1000)
+        //     await bot.telegram.deleteWebhook()
+        //     await bot.startPolling(1000)
     } else if (process.env.HOST === "local") {
         await bot.launch()
             .then(async () => {
