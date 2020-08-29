@@ -27,6 +27,9 @@ exports.launch = async () => {
     // Parse apps/json
     await app.use(bodyParser.json())
 
+    // Connecting telegram bot
+    await require('../../bot/core/bot').launch(app)
+
     // Initializing MongoDB database
     await database.initialize()
 
@@ -38,9 +41,6 @@ exports.launch = async () => {
     // Connecting routes
     await require('../../posts/routes')(app);
     await require('../../quotes/routes')(app);
-
-    // Connecting telegram bot
-    await require('../../bot/core/bot').launch(app)
 
     // Error handling
         // Handle 404

@@ -8,7 +8,15 @@ const middleware = (composer) => bot.use(composer.middleware())
 
 const launch = async (app) => {
     if (env === "heroku") {
-        await app.use(bot.webhookCallback('/bot'))
+
+        // Removing old webhook path
+        await bot.telegram.deleteWebhook()
+
+        // Setting up webhook
+        await bot.telegram.setWebhook(`${domain}/bot`)
+
+        // Starting webhook session
+        app.use(bot.webhookCallback('/bot'))
             .then(async () => {
                 await console.log("Webhook method has been chosen".yellow)
             })
