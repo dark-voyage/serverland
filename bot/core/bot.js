@@ -30,6 +30,7 @@ const launch = async () => {
         // Polling method
         //     await bot.telegram.deleteWebhook()
         //     await bot.startPolling(1000)
+        
     } else if (process.env.HOST === "local") {
         await bot.launch()
             .then(async () => {
