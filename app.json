@@ -3,6 +3,6 @@
   "description": "Serverland built on top of Node.js using Express 4",
   "repository": "https://github.com/genestatic/serverland",
   "logo": "https://genemator.me/big_logo.png",
-  "keywords": ["node", "express", "heroku", "serverland"],
+  "keywords": ["node", "express", "heroku", "serverlands"],
   "image": "heroku/nodejs"
 }
