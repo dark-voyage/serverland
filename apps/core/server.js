@@ -35,10 +35,10 @@ exports.launch = async () => {
             await bot.telegram.deleteWebhook()
 
             // Setting up webhook
-            await bot.telegram.setWebhook(`https://api.genemator.me/bot`)
+            await bot.telegram.setWebhook(process.env.TELEGRAM_URL)
 
             // Adding up telegram
-            await app.use(bot.webhookCallback('/bot'))
+            await app.use(bot.webhookCallback('/telegram'))
 
             // Loading functions & commands
             require('../../bot/actions')
