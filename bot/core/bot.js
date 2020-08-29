@@ -11,6 +11,7 @@ const launch = async () => {
             await bot.telegram.deleteWebhook()
             await bot.telegram.setWebhook(`https://${process.env.APP}.herokuapp.com:8443/${process.env.BOT_TOKEN}`)
             await bot.startWebhook(`${process.env.BOT_TOKEN}`, null, 8443)
+            await console.log(`Direct webhook method has been chosen`.yellow)
 
         // Indirect webhook method
         //     await bot.launch({
@@ -21,7 +22,7 @@ const launch = async () => {
         //         }
         //     })
         //         .then(async () => {
-        //             await console.log("Webhook method has been chosen".yellow)
+        //             await console.log("Indirect webhook method has been chosen".yellow)
         //         })
         //         .catch(async error => {
         //             await console.log(error)
