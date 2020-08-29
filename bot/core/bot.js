@@ -31,6 +31,12 @@ const launch = async () => {
         // Polling method
             await bot.telegram.deleteWebhook()
             await bot.startPolling()
+                .then(async () => {
+                    await console.log("Long polling method has been chosen".yellow)
+                })
+                .catch(async error => {
+                    await console.log(error)
+                })
 
     } else if (process.env.HOST === "local") {
         await bot.launch()
