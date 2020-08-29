@@ -8,10 +8,10 @@ const middleware = (composer) => bot.use(composer.middleware())
 const launch = async () => {
     if (process.env.HOST === "heroku") {
         // Direct webhook method
-            await bot.telegram.deleteWebhook()
-            await bot.telegram.setWebhook(`https://${process.env.APP}.herokuapp.com:8443/bot`)
-            await bot.startWebhook(`/bot`, null, 8443)
-            await console.log(`Direct webhook method has been chosen`.yellow)
+        //     await bot.telegram.deleteWebhook()
+        //     await bot.telegram.setWebhook(`https://${process.env.APP}.herokuapp.com:8443/bot`)
+        //     await bot.startWebhook(`/bot`, null, 8443)
+        //     await console.log(`Direct webhook method has been chosen`.yellow)
 
         // Indirect webhook method
         //     await bot.launch({
@@ -29,8 +29,8 @@ const launch = async () => {
         //         })
 
         // Polling method
-        //     await bot.telegram.deleteWebhook()
-        //     await bot.startPolling(1000)
+            await bot.telegram.deleteWebhook()
+            await bot.startPolling()
 
     } else if (process.env.HOST === "local") {
         await bot.launch()
