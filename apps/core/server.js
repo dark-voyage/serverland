@@ -7,7 +7,6 @@ const http = require('http');
 const express = require('express');
 const enforce = require('express-sslify');
 const bodyParser = require('body-parser');
-const { bot } = require('../../bot/core/bot')
 const database = require('../database/mongoose');
 const dbConfig = require('../config/server.config');
 
@@ -28,26 +27,6 @@ exports.launch = async () => {
     // Parse apps/json
     await app.use(bodyParser.json())
 
-    // Connecting telegram bot
-    if (process.env.HOST === "heroku") {
-        await (async () => {
-            // Removing old webhook path
-            await bot.telegram.deleteWebhook()
-
-            // Setting up webhook
-            await bot.telegram.setWebhook(process.env.TELEGRAM_URL)
-
-            // Adding up telegram
-            await app.use(bot.webhookCallback('/telegram'))
-
-            // Loading functions & commands
-            require('../../bot/actions')
-        })()
-    } else {
-        await bot.launch()
-        require('../../bot/actions')
-    }
-
     // Initializing MongoDB database
     await database.initialize()
 
@@ -61,17 +40,17 @@ exports.launch = async () => {
     await require('../../quotes/routes')(app);
 
     // Error handling
-        // Handle 404
-        app.use(function(req, res) {
-            res.status(400);
-            res.json({title: '404: Not Found'});
-        });
+    // Handle 404
+    app.use(function(req, res) {
+        res.status(400);
+        res.json({title: '404: Not Found'});
+    });
 
-        // Handle 500
-        app.use(function(req, res, next, error) {
-            res.status(500);
-            res.json({title:'500: Internal Server Error', error: error});
-        });
+    // Handle 500
+    app.use(function(req, res, next, error) {
+        res.status(500);
+        res.json({title:'500: Internal Server Error', error: error});
+    });
 
 
     // Listen for requests
