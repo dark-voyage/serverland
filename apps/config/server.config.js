@@ -5,7 +5,10 @@
  * preferred port
  */
 
+const env = require("./env.config");
+
 module.exports = () => {
-  if (process.env.HOST === "heroku") return process.env.PORT;
+  if (env.HOST === "heroku") return env.PORT;
+  else if (env.HOST === "test") return 3001;
   else return 3000;
 };

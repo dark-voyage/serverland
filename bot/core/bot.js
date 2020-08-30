@@ -1,17 +1,18 @@
 const { Telegraf, Composer } = require("telegraf");
 const colors = require("colors");
+const env = require("../../apps/config/env.config");
 
-const bot = new Telegraf(process.env.BOT_TOKEN);
+const bot = new Telegraf(env.BOT_TOKEN);
 const composer = new Composer();
 const middleware = (composer) => bot.use(composer.middleware());
 
 const launch = async () => {
-  if (process.env.HOST === "heroku") {
+  if (env.HOST === "heroku") {
     /**
      * Direct webhook method
      */
     // await bot.telegram.deleteWebhook()
-    // await bot.telegram.setWebhook(`https://${process.env.APP}.herokuapp.com:8443/bot`)
+    // await bot.telegram.setWebhook(`https://${env.APP}.herokuapp.com:8443/bot`)
     // await bot.startWebhook(`/bot`, null, 8443)
     // await console.log(`Direct webhook method has been chosen`.yellow)
 
@@ -20,7 +21,7 @@ const launch = async () => {
      */
     // await bot.launch({
     //     webhook: {
-    //         domain: 'https://${process.env.APP}.herokuapp.com:8443/bot',
+    //         domain: 'https://${env.APP}.herokuapp.com:8443/bot',
     //         hookPath: '/bot',
     //         port: 5000
     //     }
@@ -38,7 +39,7 @@ const launch = async () => {
     await bot.telegram.deleteWebhook();
     await bot.startPolling();
     await console.log("Long polling method has been chosen".yellow);
-  } else if (process.env.HOST === "local") {
+  } else if (env.HOST === "local") {
     await bot
       .launch()
       .then(async () => {

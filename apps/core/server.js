@@ -6,6 +6,7 @@
 const http = require("http");
 const express = require("express");
 const enforce = require("express-sslify");
+const env = require("../config/env.config");
 const bodyParser = require("body-parser");
 const database = require("../database/mongoose");
 const dbConfig = require("../config/server.config");
@@ -15,11 +16,11 @@ const app = express();
 
 exports.launch = async () => {
   // Enforce https
-  if (process.env.HOST === "heroku") {
+  if (env.HOST === "heroku") {
     app.use(enforce.HTTPS({ trustProtoHeader: true }));
   }
 
-  // Parse apps/x-www-form-urlencoded
+  // Parse apps/x-www.js-form-urlencoded
   await app.use(bodyParser.urlencoded({ extended: true }));
 
   // Parse apps/json
@@ -30,7 +31,7 @@ exports.launch = async () => {
 
   // Define a simple route
   await app.get("/", (req, res) => {
-    res.redirect("https://genemator.me");
+    res.redirect(env.WEBSITE);
   });
 
   // Connecting routes
@@ -52,7 +53,7 @@ exports.launch = async () => {
 
   // Listen for requests
   await (async () => {
-    if (process.env.HOST === "heroku") {
+    if (env.HOST === "heroku") {
       await http.createServer(app).listen(dbConfig(), () => {
         console.log(
           `Server is listening on port ${dbConfig()} => [heroku]`.yellow.bold

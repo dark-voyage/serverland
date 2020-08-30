@@ -1,8 +1,0 @@
-{
-  "name": "Serverland: API Executes...",
-  "description": "Serverland built on top of Node.js using Express 4",
-  "repository": "https://github.com/genestatic/serverland",
-  "logo": "https://genemator.me/big_logo.png",
-  "keywords": ["node", "express", "heroku", "serverland"],
-  "image": "heroku/nodejs"
-}
