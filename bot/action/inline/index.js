@@ -8,7 +8,7 @@ const keyboard = require('../../layouts/keyboards')
 const ds = require('../../database/ds')
 
 composer.on('inline_query', async ({ inlineQuery, answerInlineQuery }) => {
-    let results = [], indexation = 1, base = `https://github.com/genestatic/`, thumb = `https://github.com/genestatic/serverland/raw/master/bot/assets/repo.png`
+    let results = [], indexation = 1, base = `https://github.com/genestatic/`, thumb = `https://genemator.me/favicon.png`
     let repos = await Object.values(await ds("https://api.github.com/orgs/genestatic/repos")).map(function (obj) { return obj["name"]})
     let similarities = await fuzzy.filter(inlineQuery.query, repos).sort().slice(0, 20)
     let found = await similarities.map(function(obj){ return obj.string})
