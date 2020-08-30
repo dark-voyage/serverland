@@ -24,8 +24,30 @@ composer.command(`check`, async ctx => {
         }
     }
 
+    const server = async () => {
+        if (await isReachable('api.genemator.me')) {
+            return "STABLE"
+        } else {
+            return "UNSTABLE"
+        }
+    }
+
+    const website = async () => {
+        if (await isReachable('genemator.me')) {
+            return "STABLE"
+        } else {
+            return "UNSTABLE"
+        }
+    }
+
     await ctx.replyWithAnimation({url: `https://media.giphy.com/media/3o6UB9xT8upEDGrcqs/source.gif`}, {
-        caption: await message.check(await github(), await telegram(), uptime),
+        caption: await message.check(
+            await github(),
+            await telegram(),
+            await server(),
+            await website(),
+            uptime
+        ),
         reply_markup: keyboard.check,
         parse_mode: "HTML"
     })

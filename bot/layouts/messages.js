@@ -45,9 +45,11 @@ exports.admin_view = (data, match) =>
     `<b>Rank:</b> <code>${data["rank"]}</code>` + `\n` +
     `<b>Experiences:</b> <code>${data["experience"].toString()}</code>`
 
-exports.check = async (github, telegram, uptime) =>
+exports.check = async (github, telegram, server, website, uptime) =>
     `<b>Genemator's Assistant™ Bot status health checker:</b>` + `\n` +
     `\n` +
+    `<b>Geno's Website:</b> <code>${(website)}</code>` + `\n` +
+    `<b>Geno's API Server:</b> <code>${(server)}</code>` + `\n` +
     `<b>Github API:</b> <code>${(github)}</code>` + `\n` +
     `<b>Telegram API:</b> <code>${(telegram)}</code>` + `\n` +
     `\n` +

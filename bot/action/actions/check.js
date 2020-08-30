@@ -24,7 +24,28 @@ composer.action(`check`, async ctx => {
         }
     }
 
-    await ctx.editMessageCaption(await message.check(await github(), await telegram(), uptime), {
+    const server = async () => {
+        if (await isReachable('api.genemator.me')) {
+            return "STABLE"
+        } else {
+            return "UNSTABLE"
+        }
+    }
+
+    const website = async () => {
+        if (await isReachable('genemator.me')) {
+            return "STABLE"
+        } else {
+            return "UNSTABLE"
+        }
+    }
+
+    await ctx.editMessageCaption(await message.check(
+        await github(),
+        await telegram(),
+        await server(),
+        await website(),
+        uptime), {
         parse_mode: "HTML",
         reply_markup: keyboard.check
     })
