@@ -51,7 +51,7 @@ const launch = async () => {
   } else {
     await console.log("Bot can't be started due to wrong environment!".red);
   }
-  require("../actions");
+  require("../action");
 };
 
 module.exports = { bot, composer, middleware, launch };
