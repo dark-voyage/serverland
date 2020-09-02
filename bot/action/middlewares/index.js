@@ -7,4 +7,3 @@ require("./stats");
 require("./links");
 require("./feedback");
 require("./stream");
-require("./subscribe");
