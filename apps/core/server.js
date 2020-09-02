@@ -37,6 +37,7 @@ exports.launch = async () => {
   // Connecting routes
   await require("../../posts/routes")(app);
   await require("../../quotes/routes")(app);
+  await require("../../subscribers/routes")(app);
 
   // Error handling
   // Handle 404
