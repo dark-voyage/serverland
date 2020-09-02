@@ -14,32 +14,31 @@ exports.create = async (req, res) => {
     });
   }
 
-  const checker = await Subscriber.exists({id: req.body.id})
+  const checker = await Subscriber.exists({ id: req.body.id });
   if (checker) {
     return res.status(409).send({
-      message: "Subscriber is already subscribed"
-    })
+      message: "Subscriber is already subscribed",
+    });
   } else {
     // Create a Subscriber
     const subscriber = new Subscriber({
-      id: req.body.id
+      id: req.body.id,
     });
 
     // Save Subscriber in the database
     await subscriber
-        .save()
-        .then((data) => {
-          res.send({
-            status: "success",
-            member: data.id
-          });
-        })
-        .catch((err) => {
-          res.status(500).send({
-            message: err.message || "Some error occurred while subscribing.",
-          });
+      .save()
+      .then((data) => {
+        res.send({
+          status: "success",
+          member: data.id,
         });
-
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: err.message || "Some error occurred while subscribing.",
+        });
+      });
   }
 };
 
@@ -47,21 +46,18 @@ exports.create = async (req, res) => {
 exports.findAll = async (req, res) => {
   await Subscriber.find()
     .then(async (subscriber) => {
-
       let result = await Object.values(
-          subscriber.map(
-              function (obj) {
-                return obj["id"]
-              }
-          )
-      )
-
+        subscriber.map(function (obj) {
+          return obj["id"];
+        })
+      );
 
       res.json(result);
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occurred while retrieving subscribers.",
+        message:
+          err.message || "Some error occurred while retrieving subscribers.",
       });
     });
 };
@@ -76,7 +72,7 @@ exports.findOne = async (req, res) => {
         });
       }
       res.send({
-        registered: true
+        registered: true,
       });
     })
     .catch((err) => {

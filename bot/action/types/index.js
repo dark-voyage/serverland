@@ -1,3 +1,3 @@
-require('./photo')
-require('./video')
-require('./audio')
+require("./photo");
+require("./video");
+require("./audio");

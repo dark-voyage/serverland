@@ -1,7 +1,6 @@
-require('./admin')
+require("./admin");
 // require('./types')
-require('./inline')
-require('./actions')
-require('./middlewares')
-require('./exclude')
-
+require("./inline");
+require("./actions");
+require("./middlewares");
+require("./exclude");

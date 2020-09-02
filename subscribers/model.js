@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const SubscriberSchema = mongoose.Schema(
   {
-    id: { type: String, required: true }
+    id: { type: String, required: true },
   },
   {
     timestamps: true,
