@@ -3,7 +3,7 @@ const { Markup } = require('telegraf')
 const axios = require('axios')
 
 const consoles = require('../../layouts/consoles')
-const baseUrl = `http://localhost:3000/subscriber/`
+const baseUrl = `https://api.genemator.me/subscriber/`
 
 const status = async (people) => {
     return await axios.get(baseUrl + people)

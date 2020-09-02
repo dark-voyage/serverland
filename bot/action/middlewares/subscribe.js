@@ -5,7 +5,7 @@ const axios = require('axios')
 const consoles = require('../../layouts/consoles')
 
 const status = async (people) => {
-    return await axios.get('http://localhost:3000/subscriber/' + people)
+    return await axios.get('https://api.genemator.me/subscriber/' + people)
         .then(res => {
             return res.data.registered
         })
