@@ -10,10 +10,10 @@ const ds = require("../../database/ds");
 composer.on("inline_query", async ({ inlineQuery, answerInlineQuery }) => {
   let results = [],
     indexation = 1,
-    base = `https://github.com/genestatic/`,
+    base = `https://github.com/genemators/`,
     thumb = `https://genemator.me/favicon.png`;
   let repos = await Object.values(
-    await ds("https://api.github.com/orgs/genestatic/repos")
+    await ds("https://api.github.com/users/genemators/repos")
   ).map(function (obj) {
     return obj["name"];
   });
@@ -25,7 +25,7 @@ composer.on("inline_query", async ({ inlineQuery, answerInlineQuery }) => {
     return obj.string;
   });
   for (let key of found) {
-    let data = await ds(`https://api.github.com/repos/genestatic/${key}`);
+    let data = await ds(`https://api.github.com/repos/genemators/${key}`);
     results.push({
       type: "article",
       id: indexation,
