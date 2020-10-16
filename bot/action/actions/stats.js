@@ -1,17 +1,16 @@
 const { composer, middleware } = require("../../core/bot");
 const { Markup } = require("telegraf");
 const axios = require("axios");
+const env = require("../../../apps/config/env.config");
 
 const consoles = require("../../layouts/consoles");
 const database = require("../../database/db");
-const baseUrl = `https://api.genemator.me/subscriber/`;
+const baseUrl = env.DATABASE + `/subscriber/`;
 
 const statusChecker = async (people) => {
-  return await axios
-    .get("https://api.genemator.me/subscriber/" + people)
-    .then((res) => {
-      return res.data.registered;
-    });
+  return await axios.get(baseUrl + people).then((res) => {
+    return res.data.registered;
+  });
 };
 
 const text = async (people) => {
