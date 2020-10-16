@@ -89,7 +89,7 @@ exports.findOne = async (req, res) => {
 
 // Delete a Subscriber with the specified subId in the request
 exports.delete = async (req, res) => {
-  await Subscriber.findOneAndRemove(req.params.subId)
+  await Subscriber.deleteOne({ id: req.params.subId })
     .then((Subscriber) => {
       if (!Subscriber) {
         return res.status(404).send({
