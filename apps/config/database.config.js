@@ -10,6 +10,6 @@ const env = require("./env.config");
 module.exports = () => {
   if (env.HOST === "heroku") return env.DB_HOST;
   else if (env.HOST === "test") return null;
-  else if (env.HOST === "local") return "mongodb://localhost:27017/serverland";
+  else if (env.HOST === "local") return env.DB_HOST;
   else return null;
 };
