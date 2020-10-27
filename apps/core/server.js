@@ -36,10 +36,10 @@ exports.launch = async () => {
     webhook: {
       domain: env.DOMAIN,
       hookPath: "/bot",
-      port: env.PORT,
+      port: 8443,
     },
   });
-  
+
   // Define a simple route
   await app.get("/", (req, res) => {
     res.redirect(env.WEBSITE);
