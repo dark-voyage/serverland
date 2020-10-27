@@ -31,7 +31,8 @@ exports.launch = async () => {
   await database.initialize();
 
   // Setting up Telegram bot
-  await require("../../bot/action")
+  // await require("../../bot/action")
+  bot.on('text', ({ replyWithHTML }) => replyWithHTML('<b>Hello</b>'))
   await bot.telegram.deleteWebhook()
   await bot.telegram.setWebhook(`https://api.genemator.me/bot`)
   await app.use(bot.webhookCallback('/bot'));
