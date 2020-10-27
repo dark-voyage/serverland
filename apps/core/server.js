@@ -10,6 +10,7 @@ const env = require("../config/env.config");
 const bodyParser = require("body-parser");
 const database = require("../database/mongoose");
 const dbConfig = require("../config/server.config");
+const { bot } = require("../../bot/core/bot");
 
 // Create express app
 const app = express();
@@ -38,6 +39,11 @@ exports.launch = async () => {
   await require("../../posts/routes")(app);
   await require("../../quotes/routes")(app);
   await require("../../subscribers/routes")(app);
+
+  // Setting up Telegram bot
+  await bot.telegram.deleteWebhook()
+  await bot.telegram.setWebhook(`https://${env.APP}.herokuapp.com:${env.PORT}/bot`)
+  await app.use(bot.webhookCallback('/bot'));
 
   // Error handling
   // Handle 404
