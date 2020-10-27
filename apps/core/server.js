@@ -30,6 +30,11 @@ exports.launch = async () => {
   // Initializing MongoDB database
   await database.initialize();
 
+  // Setting up Telegram bot
+  await bot.telegram.deleteWebhook()
+  await bot.telegram.setWebhook(`https://api.genemator.me/bot`)
+  await app.use(bot.webhookCallback('/bot'));
+
   // Define a simple route
   await app.get("/", (req, res) => {
     res.redirect(env.WEBSITE);
@@ -39,11 +44,6 @@ exports.launch = async () => {
   await require("../../posts/routes")(app);
   await require("../../quotes/routes")(app);
   await require("../../subscribers/routes")(app);
-
-  // Setting up Telegram bot
-  await bot.telegram.deleteWebhook()
-  await bot.telegram.setWebhook(`https://api.genemator.me/bot`)
-  await app.use(bot.webhookCallback('/bot'));
 
   // Error handling
   // Handle 404
