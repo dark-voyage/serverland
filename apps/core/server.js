@@ -34,7 +34,7 @@ exports.launch = async () => {
   await require("../../bot/action");
   await bot.launch({
     webhook: {
-      domain: env.DOMAIN,
+      domain: `https://${env.APP}.herokuapp.com`,
       hookPath: "/bot",
       port: 8443,
     },
