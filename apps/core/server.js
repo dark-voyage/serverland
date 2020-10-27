@@ -48,16 +48,16 @@ exports.launch = async () => {
 
   // Error handling
   // Handle 404
-  app.use(function (req, res) {
-    res.status(400);
-    res.json({ title: "404: Not Found" });
-  });
+  // app.use(function (req, res) {
+  //   res.status(400);
+  //   res.json({ title: "404: Not Found" });
+  // });
 
   // Handle 500
-  app.use(function (req, res, next, error) {
-    res.status(500);
-    res.json({ title: "500: Internal Server Error", error: error });
-  });
+  // app.use(function (req, res, next, error) {
+  //   res.status(500);
+  //   res.json({ title: "500: Internal Server Error", error: error });
+  // });
 
   // Listen for requests
   await (async () => {
