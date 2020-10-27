@@ -31,10 +31,17 @@ exports.launch = async () => {
   await database.initialize();
 
   // Setting up Telegram bot
-  await require("../../bot/action")
-  await bot.telegram.deleteWebhook()
-  await bot.telegram.setWebhook(`https://${env.APP}.herokuapp.com/bot`)
-  await app.use(bot.webhookCallback('/bot'));
+  await require("../../bot/action");
+  await bot.launch({
+    webhook: {
+      domain: env.DOMAIN,
+      hookPath: "/bot",
+      port: env.PORT,
+    },
+  });
+  // await bot.telegram.deleteWebhook()
+  // await bot.telegram.setWebhook(`https://${env.APP}.herokuapp.com/bot`)
+  // await app.use(bot.webhookCallback('/bot'));
 
   // Define a simple route
   await app.get("/", (req, res) => {
