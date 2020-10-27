@@ -31,14 +31,10 @@ exports.launch = async () => {
   await database.initialize();
 
   // Setting up Telegram bot
-  await require("../../bot/action");
-  await bot.launch({
-    webhook: {
-      domain: `https://${env.APP}.herokuapp.com`,
-      hookPath: "/bot",
-      port: 8443,
-    },
-  });
+  await require("../../bot/action")
+  await bot.telegram.deleteWebhook()
+  await bot.telegram.setWebhook(`https://api.genemator.me/bot`)
+  await app.use(bot.webhookCallback('/bot'));
 
   // Define a simple route
   await app.get("/", (req, res) => {
