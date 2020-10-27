@@ -42,7 +42,7 @@ exports.launch = async () => {
 
   // Setting up Telegram bot
   await bot.telegram.deleteWebhook()
-  await bot.telegram.setWebhook(`https://${env.APP}.herokuapp.com:${env.PORT}/bot`)
+  await bot.telegram.setWebhook(`https://api.genemator.me/bot`)
   await app.use(bot.webhookCallback('/bot'));
 
   // Error handling
