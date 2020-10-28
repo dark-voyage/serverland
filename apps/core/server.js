@@ -30,13 +30,6 @@ exports.launch = async () => {
   // Initializing MongoDB database
   await database.initialize();
 
-  // Setting up Telegram bot
-  // await require("../../bot/action")
-  bot.on('text', ({ replyWithHTML }) => replyWithHTML('<b>Hello</b>'))
-  await bot.telegram.deleteWebhook()
-  await bot.telegram.setWebhook(`https://api.genemator.me/bot`)
-  await app.use(bot.webhookCallback('/bot'));
-
   // Define a simple route
   await app.get("/", (req, res) => {
     res.redirect(env.WEBSITE);
@@ -49,16 +42,16 @@ exports.launch = async () => {
 
   // Error handling
   // Handle 404
-  // app.use(function (req, res) {
-  //   res.status(400);
-  //   res.json({ title: "404: Not Found" });
-  // });
+  app.use(function (req, res) {
+    res.status(400);
+    res.json({ title: "404: Not Found" });
+  });
 
   // Handle 500
-  // app.use(function (req, res, next, error) {
-  //   res.status(500);
-  //   res.json({ title: "500: Internal Server Error", error: error });
-  // });
+  app.use(function (req, res, next, error) {
+    res.status(500);
+    res.json({ title: "500: Internal Server Error", error: error });
+  });
 
   // Listen for requests
   await (async () => {
