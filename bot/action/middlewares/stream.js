@@ -6,14 +6,14 @@ const message = require("../../layouts/messages");
 const keyboard = require("../../layouts/keyboards");
 
 composer.command(`stream`, async (ctx) => {
-	await ctx.replyWithAnimation(
-		{ url: gifs.stream },
-		{
-			caption: message.stream,
-			parse_mode: "HTML",
-			reply_markup: keyboard.stream,
-		}
-	);
+  await ctx.replyWithAnimation(
+    { url: gifs.stream },
+    {
+      caption: message.stream,
+      parse_mode: "HTML",
+      reply_markup: keyboard.stream,
+    }
+  );
 });
 
 middleware(composer);

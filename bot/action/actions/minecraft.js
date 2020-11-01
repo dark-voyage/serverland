@@ -7,28 +7,27 @@ const ds = require("../../database/ds");
 const env = require("../../core/env");
 
 composer.action(`minecraft`, async (ctx) => {
-	let uptime = await new Date().toLocaleString();
-	const database = await ds(env.MINECRAFT);
+  let uptime = await new Date().toLocaleString();
+  const database = await ds(env.MINECRAFT);
 
-	if (database === null || database["debug"].ping === false) {
-		await ctx.editMessageCaption(
-			`<b>Unavailable at the moment! Please, try again later...</b>` +
-				`\n<b>Last Update:</b> ${uptime}`,
-			{
-				parse_mode: "HTML",
-				reply_markup: keyboard.minecraft,
-			}
-		);
-	} else {
-		await ctx.editMessageCaption(
-			(await message.minecraft(database)) +
-				`\n<b>Last Update:</b> ${uptime}`,
-			{
-				parse_mode: "HTML",
-				reply_markup: keyboard.minecraft,
-			}
-		);
-	}
+  if (database === null || database["debug"].ping === false) {
+    await ctx.editMessageCaption(
+      `<b>Unavailable at the moment! Please, try again later...</b>` +
+        `\n<b>Last Update:</b> ${uptime}`,
+      {
+        parse_mode: "HTML",
+        reply_markup: keyboard.minecraft,
+      }
+    );
+  } else {
+    await ctx.editMessageCaption(
+      (await message.minecraft(database)) + `\n<b>Last Update:</b> ${uptime}`,
+      {
+        parse_mode: "HTML",
+        reply_markup: keyboard.minecraft,
+      }
+    );
+  }
 });
 
 middleware(composer);
