@@ -4,14 +4,17 @@ const gifs = require("../../database/db").gifs;
 const consoles = require("../../layouts/consoles");
 const message = require("../../layouts/messages");
 const keyboard = require("../../layouts/keyboards");
+const database = require("../../database/db");
 
-composer.help(async (ctx) => {
+composer.command(`students`, async (ctx) => {
+	const students = Object.keys(database.students);
+
 	await ctx.replyWithAnimation(
-		{ url: gifs.help },
+		{ url: gifs.student },
 		{
 			parse_mode: "HTML",
-			caption: message.help,
-			reply_markup: keyboard.help,
+			caption: message.student_menu,
+			reply_markup: await keyboard.student_list(students),
 		}
 	);
 });
