@@ -10,7 +10,6 @@ const env = require("../config/env.config");
 const bodyParser = require("body-parser");
 const database = require("../database/mongoose");
 const dbConfig = require("../config/server.config");
-const { bot } = require("../../bot/core/bot");
 
 // Create express app
 const app = express();
