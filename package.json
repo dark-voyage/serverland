@@ -1,7 +1,7 @@
 {
   "name": "serverland",
   "version": "3.5.0",
-  "description": "Serverland - Genemator's Server Manager.",
+  "description": "Serverland - Genemator Server Manager.",
   "main": "bin/www.js",
   "scripts": {
     "start": "node bin/www.js",
