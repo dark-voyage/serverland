@@ -23,7 +23,7 @@
     "Mongoose",
     "Serverland"
   ],
-  "author": "Genemator Sakhib <genemators@gmail.com> (https://genemator.me)",
+  "author": "Genemator Sakhib <genemators@gmail.com> (https://genemator.uz)",
   "license": "GPL-3.0",
   "dependencies": {
     "axios": "^0.20.0",
